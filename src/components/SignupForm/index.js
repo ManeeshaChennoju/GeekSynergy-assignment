@@ -65,7 +65,7 @@ const SignupForm = () => {
             <option value="">Select</option>
             <option value="Student">Student</option>
             <option value="Engineer">Engineer</option>
-            {/* Add other profession options here */}
+            {/* We can Add other profession options here */}
           </select>
         </div>
         <button type="button" onClick={handleSubmit}>
