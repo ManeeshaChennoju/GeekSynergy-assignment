@@ -19,21 +19,23 @@ const SignupForm = () => {
   };
 
   const handleSubmit = () => {
-    // Save userData to local storage
+    // Saving userData to local storage
     localStorage.setItem("userData", JSON.stringify(userData));
     alert("Signup Successful! Please proceed to login.");
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h2>User Signup</h2>
       <form>
         <div>
           <label>Name:</label>
+          <br />
           <input type="text" name="name" onChange={handleChange} required />
         </div>
         <div>
           <label>Password:</label>
+          <br />
           <input
             type="password"
             name="password"
@@ -43,10 +45,12 @@ const SignupForm = () => {
         </div>
         <div>
           <label>Email:</label>
+          <br />
           <input type="email" name="email" onChange={handleChange} required />
         </div>
         <div>
           <label>Phone Number:</label>
+          <br />
           <input
             type="tel"
             name="phoneNumber"
@@ -56,6 +60,7 @@ const SignupForm = () => {
         </div>
         <div>
           <label>Profession:</label>
+          <br />
           <select name="profession" onChange={handleChange} required>
             <option value="">Select</option>
             <option value="Student">Student</option>

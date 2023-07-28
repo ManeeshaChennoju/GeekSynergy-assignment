@@ -50,26 +50,40 @@ nav {
   background-color: #007bff;
   padding: 10px;
   text-align: center;
+  display: flex;
 }
 
 nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
 }
 
 nav li {
   display: inline-block;
   margin-right: 20px;
+  list-style-type: none;
 }
 
 nav li a {
   color: #fff;
   text-decoration: none;
   font-size: 18px;
+  list-style-type: none;
 }
 
 nav li a:hover {
   color: #f0f0f0;
   background-color: #0056b3;
+  list-style-type: none;
+}
+
+.link-item {
+  text-decoration: none;
+}
+
+.routes_container {
+  height: 100vh;
+  margin-top: 20px;
 }

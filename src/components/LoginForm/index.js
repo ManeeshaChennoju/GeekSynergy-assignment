@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import "./index.css";
+import MovieList from "../MovieList";
 
 const LoginForm = () => {
   const [loginData, setLoginData] = useState({
     name: "",
     password: "",
   });
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State variable to track login status
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,7 +19,7 @@ const LoginForm = () => {
   };
 
   const handleLogin = () => {
-    // Retrieve userData from local storage
+    // Retrieving userData from local storage
     const userData = JSON.parse(localStorage.getItem("userData"));
 
     if (
@@ -25,36 +28,41 @@ const LoginForm = () => {
       userData.password === loginData.password
     ) {
       alert("Login Successful!");
-      // Navigate to the MovieList component
-      // You can use react-router-dom or conditional rendering to achieve this.
+      setIsLoggedIn(true); // Set isLoggedIn to true after successful login
     } else {
       alert("Invalid Credentials");
     }
   };
 
   return (
-    <div className="form-container">
-      <h2>User Login</h2>
-      <form>
-        <div>
-          <label>Name:</label>
-          <br />
-          <input type="text" name="name" onChange={handleChange} required />
+    <div>
+      {isLoggedIn ? ( // Conditionally render the MovieList component when isLoggedIn is true
+        <MovieList />
+      ) : (
+        <div className="form-container">
+          <h2>User Login</h2>
+          <form>
+            <div>
+              <label>Name:</label>
+              <br />
+              <input type="text" name="name" onChange={handleChange} required />
+            </div>
+            <div>
+              <label>Password:</label>
+              <br />
+              <input
+                type="password"
+                name="password"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button type="button" onClick={handleLogin}>
+              Login
+            </button>
+          </form>
         </div>
-        <div>
-          <label>Password:</label>
-          <br />
-          <input
-            type="password"
-            name="password"
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="button" onClick={handleLogin}>
-          Login
-        </button>
-      </form>
+      )}
     </div>
   );
 };
